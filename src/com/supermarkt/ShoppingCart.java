@@ -28,21 +28,32 @@ public class ShoppingCart {
         int discount=0;
         int netTotal=0;
         payment *=100;
+
+        //showing the products in shopping cart
         System.out.println("Your shopping cart includes the following products: ");
+
+        //calculating total price without discount and show it
         for (Product product: productsInCart) {
             System.out.println(product.getProductName()+ ", "+ product.getPrice()/100+ " euros " + product.getPrice()%100+ " cents.");
             total +=(product.getPrice());
 
         }
         System.out.println("The total amount without discount: "+ total/100 + " euros " + total%100 + " cents ");
+
+        //calculating discount and show it
         if(total>2000){
            discount=100;
 
         }else if(total>1000){
             discount= 50;
         }
+        System.out.println("You get "+ discount+ " cents discount.");
+
+        //calculating total price with discount and show it
         netTotal=total-discount;
         System.out.println("The total amount with discount: "+ netTotal/100+ " euros "+ netTotal%100+ " cents ");
+
+        //calculating change and show it
         int payBack=0;
         if (payment>=netTotal){
             payBack=payment-netTotal;

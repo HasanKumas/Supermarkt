@@ -23,9 +23,11 @@ public class ShoppingCart {
      * calculates the change and show it
      * calculate the discount and show it
      */
-    public void checkOut(){
+    public void checkOut(int payment){
         int total=0;
         int discount=0;
+        int netTotal=0;
+        payment *=100;
         System.out.println("Your shopping cart includes the following products: ");
         for (Product product: productsInCart) {
             System.out.println(product.getProductName()+ ", "+ product.getPrice()/100+ " euros " + product.getPrice()%100+ " cents.");
@@ -39,6 +41,16 @@ public class ShoppingCart {
         }else if(total>1000){
             discount= 50;
         }
-        System.out.println("The total amount with discount: "+ (total-discount)/100+ " euros "+ (total-discount)%100+ " cents ");
+        netTotal=total-discount;
+        System.out.println("The total amount with discount: "+ netTotal/100+ " euros "+ netTotal%100+ " cents ");
+        int payBack=0;
+        if (payment>=netTotal){
+            payBack=payment-netTotal;
+            System.out.println("You get "+ (payBack/100)+ " euros, "+ (payBack%100)+ " cents back.");
+        }
+        else{
+            payBack=netTotal-payment;
+            System.out.println("You should pay "+ (payBack/100)+ " euros, "+ (payBack%100)+ " cents more.");
+        }
     }
 }

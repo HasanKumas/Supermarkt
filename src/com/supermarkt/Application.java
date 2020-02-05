@@ -19,6 +19,6 @@ public class Application {
 
         shoppingCart.removeFromCart(supermarkt.yoghurt);
 
-        shoppingCart.checkOut();
+        shoppingCart.checkOut(17);
     }
 }
